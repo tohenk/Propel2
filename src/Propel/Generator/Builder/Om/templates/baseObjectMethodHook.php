@@ -9,7 +9,7 @@
     {
         <?php if ($hasBaseClass) : ?>
         if (is_callable('parent::preSave')) {
-            return parent::preSave($con);
+            //return parent::preSave($con);
         }
         <?php endif?>
         return true;
@@ -25,7 +25,7 @@
     {
         <?php if ($hasBaseClass) : ?>
         if (is_callable('parent::postSave')) {
-            parent::postSave($con);
+            //parent::postSave($con);
         }
         <?php endif?>
     }
@@ -41,7 +41,7 @@
     {
         <?php if ($hasBaseClass) : ?>
         if (is_callable('parent::preInsert')) {
-            return parent::preInsert($con);
+            //return parent::preInsert($con);
         }
         <?php endif?>
         return true;
@@ -57,7 +57,7 @@
     {
         <?php if ($hasBaseClass) : ?>
         if (is_callable('parent::postInsert')) {
-            parent::postInsert($con);
+            //parent::postInsert($con);
         }
         <?php endif?>
     }
@@ -73,7 +73,7 @@
     {
         <?php if ($hasBaseClass) : ?>
         if (is_callable('parent::preUpdate')) {
-            return parent::preUpdate($con);
+            //return parent::preUpdate($con);
         }
         <?php endif?>
         return true;
@@ -89,7 +89,7 @@
     {
         <?php if ($hasBaseClass) : ?>
         if (is_callable('parent::postUpdate')) {
-            parent::postUpdate($con);
+            //parent::postUpdate($con);
         }
         <?php endif?>
     }
@@ -105,7 +105,7 @@
     {
         <?php if ($hasBaseClass) : ?>
         if (is_callable('parent::preDelete')) {
-            return parent::preDelete($con);
+            //return parent::preDelete($con);
         }
         <?php endif?>
         return true;
@@ -121,7 +121,7 @@
     {
         <?php if ($hasBaseClass) : ?>
         if (is_callable('parent::postDelete')) {
-            parent::postDelete($con);
+            //parent::postDelete($con);
         }
         <?php endif?>
     }
