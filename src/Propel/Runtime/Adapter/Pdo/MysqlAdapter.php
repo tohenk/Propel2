@@ -89,7 +89,7 @@ class MysqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::quoteIdentifier()
+     * @see SqlAdapterInterface::quoteIdentifier()
      *
      * @param string $text
      *
@@ -101,7 +101,7 @@ class MysqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::quoteIdentifierTable()
+     * @see SqlAdapterInterface::quoteIdentifierTable()
      *
      * @param string $table
      *
@@ -114,7 +114,7 @@ class MysqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::applyLimit()
+     * @see SqlAdapterInterface::applyLimit()
      *
      * @param string $sql
      * @param int $offset
@@ -135,7 +135,7 @@ class MysqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::random()
+     * @see SqlAdapterInterface::random()
      *
      * @param string|null $seed
      *
@@ -147,7 +147,7 @@ class MysqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::bindValue()
+     * @see SqlAdapterInterface::bindValue()
      *
      * @param \PDOStatement $stmt
      * @param string $parameter

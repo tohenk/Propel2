@@ -26,7 +26,7 @@ class MssqlAdapter extends PdoAdapter implements SqlAdapterInterface
     /**
      * MS SQL Server does not support SET NAMES
      *
-     * @see AdapterInterface::setCharset()
+     * @see SqlAdapterInterface::setCharset()
      *
      * @param \Propel\Runtime\Connection\ConnectionInterface $con
      * @param string $charset
@@ -85,7 +85,7 @@ class MssqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::quoteIdentifier()
+     * @see SqlAdapterInterface::quoteIdentifier()
      *
      * @param string $text
      *
@@ -97,7 +97,7 @@ class MssqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::quoteIdentifierTable()
+     * @see SqlAdapterInterface::quoteIdentifierTable()
      *
      * @param string $table
      *
@@ -110,7 +110,7 @@ class MssqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::random()
+     * @see SqlAdapterInterface::random()
      *
      * @param string|null $seed
      *
@@ -129,7 +129,7 @@ class MssqlAdapter extends PdoAdapter implements SqlAdapterInterface
      *
      * @author Benjamin Runnels <kraven@kraven.org>
      *
-     * @see AdapterInterface::applyLimit()
+     * @see SqlAdapterInterface::applyLimit()
      *
      * @param string $sql
      * @param int $offset
