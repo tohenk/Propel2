@@ -248,7 +248,7 @@ class Criteria
     /**
      * Default operator for combination of criterions
      *
-     * @see addUsingOperator
+     * @see Criteria::addUsingOperator()
      * @var string Criteria::LOGICAL_AND or Criteria::LOGICAL_OR
      */
     protected $defaultCombineOperator = Criteria::LOGICAL_AND;
@@ -2339,11 +2339,10 @@ class Criteria
             $qualifiedCols = $this->keys(); // we need table.column cols when populating values
             $columns = []; // but just 'column' cols for the SQL
             foreach ($qualifiedCols as $qualifiedCol) {
-                $columns[] = substr($qualifiedCol, strrpos($qualifiedCol, '.') + 1);
+                $columns[] = $qualifiedCol;
             }
 
             // add identifiers
-            $columns = array_map([$this, 'quoteIdentifier'], $columns);
             $tableName = $this->quoteIdentifierTable($tableName);
 
             $sql = 'INSERT INTO ' . $tableName
@@ -2481,9 +2480,10 @@ class Criteria
                 $sql .= ' SET ';
                 $p = 1;
                 foreach ($updateTablesColumns[$tableName] as $col) {
-                    $updateColumnName = substr($col, strrpos($col, '.') + 1);
+                    $updateColumnName = $col;
+                    //$updateColumnName = substr($col, strrpos($col, '.') + 1);
                     // add identifiers for the actual database?
-                    $updateColumnName = $this->quoteIdentifier($updateColumnName, $tableName);
+                    //$updateColumnName = $this->quoteIdentifier($updateColumnName, $tableName);
                     if ($updateValues->getComparison($col) != Criteria::CUSTOM_EQUAL) {
                         $sql .= $updateColumnName . '=:p' . $p++ . ', ';
                     } else {
