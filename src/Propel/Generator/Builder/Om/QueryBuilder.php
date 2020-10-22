@@ -1398,6 +1398,9 @@ abstract class " . $this->getUnqualifiedClassName() . ' extends ' . $parentClass
         $this->declareClassFromBuilder($fkStubObjectBuilder);
         $fkPhpName = $this->getClassNameFromBuilder($fkStubObjectBuilder, true);
         $relationName = $this->getRefFKPhpNameAffix($fk);
+        if ($this->getTable()->hasColumn($relationName)) {
+            $relationName .= 'FK';
+        }
         $objectName = '$' . $fkTable->getCamelCaseName();
         $script .= "
     /**
