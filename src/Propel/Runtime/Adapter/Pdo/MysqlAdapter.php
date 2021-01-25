@@ -204,7 +204,7 @@ class MysqlAdapter extends PdoAdapter implements SqlAdapterInterface
     }
 
     /**
-     * @see AdapterInterface::applyLock()
+     * @see SqlAdapterInterface::applyLock()
      *
      * @param string $sql
      * @param \Propel\Runtime\ActiveQuery\Lock $lock
