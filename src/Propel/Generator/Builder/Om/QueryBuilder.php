@@ -621,20 +621,21 @@ class QueryBuilder extends AbstractOMBuilder
         $ARClassName = $this->getObjectClassName();
         $this->declareClassFromBuilder($this->getStubObjectBuilder());
         $this->declareClasses('\PDO');
+        $tableName = $this->quoteIdentifier($table->getName());
         $selectColumns = [];
         foreach ($table->getColumns() as $column) {
             if (!$column->isLazyLoad()) {
-                $selectColumns[] = $this->quoteIdentifier($column->getName());
+                $selectColumns[] = sprintf('%s.%s', $tableName, $this->quoteIdentifier($column->getName()));
             }
         }
         $conditions = [];
         foreach ($table->getPrimaryKey() as $index => $column) {
-            $conditions[] = sprintf('%s = :p%d', $this->quoteIdentifier($column->getName()), $index);
+            $conditions[] = sprintf('%s.%s = :p%d', $tableName, $this->quoteIdentifier($column->getName()), $index);
         }
         $query = sprintf(
             'SELECT %s FROM %s WHERE %s',
             implode(', ', $selectColumns),
-            $this->quoteIdentifier($table->getName()),
+            $tableName,
             implode(' AND ', $conditions),
         );
         $pks = [];

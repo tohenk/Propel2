@@ -63,9 +63,12 @@ class InsertQuerySqlBuilder extends AbstractSqlQueryBuilder
         $columnNames = [];
         foreach ($qualifiedColumnNames as $qualifiedCol) {
             $dotPos = strrpos($qualifiedCol, '.');
-            $columnNames[] = substr($qualifiedCol, $dotPos + 1);
+            $columnName = substr($qualifiedCol, $dotPos + 1);
+            $columnName = $this->criteria->quoteIdentifier($columnName);
+            $tableName = $this->criteria->getTableName($qualifiedCol);
+            $tableName = $this->quoteIdentifierTable($tableName);
+            $columnNames[] = sprintf('%s.%s', $tableName, $columnName);
         }
-        $columnNames = array_map([$this->criteria, 'quoteIdentifier'], $columnNames);
 
         return implode(',', $columnNames);
     }
