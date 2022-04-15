@@ -6550,7 +6550,8 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
         } elseif ($table->getIdMethod() == IdMethod::NATIVE && ($platform->getNativeIdMethod() == PlatformInterface::SEQUENCE || $platform->getNativeIdMethod() == PlatformInterface::SERIAL)) {
             $primaryKeyMethodInfo = $platform->getSequenceName($table);
         }
-        $query = 'INSERT INTO ' . $this->quoteIdentifier($table->getName()) . ' (%s) VALUES (%s)';
+        $tableName = $this->quoteIdentifier($table->getName());
+        $query = 'INSERT INTO ' . $tableName . ' (%s) VALUES (%s)';
         $script = "
         \$modifiedColumns = [];
         \$index = 0;
@@ -6604,7 +6605,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
          // check the columns in natural order for more readable SQL queries";
         foreach ($table->getColumns() as $column) {
             $constantName = $this->getColumnConstant($column);
-            $identifier = var_export($this->quoteIdentifier($column->getName()), true);
+            $identifier = var_export(sprintf('%s.%s', $tableName, $this->quoteIdentifier($column->getName())), true);
             $script .= "
         if (\$this->isColumnModified($constantName)) {
             \$modifiedColumns[':p' . \$index++]  = $identifier;
@@ -6626,7 +6627,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
 
         $tab = '                        ';
         foreach ($table->getColumns() as $column) {
-            $columnNameCase = var_export($this->quoteIdentifier($column->getName()), true);
+            $columnNameCase = var_export(sprintf('%s.%s', $tableName, $this->quoteIdentifier($column->getName())), true);
             $accessValueStatement = $this->getAccessValueStatement($column);
             $bindValueStatement = $platform->getColumnBindingPHP($column, '$identifier', $accessValueStatement, $tab);
             $script .= "

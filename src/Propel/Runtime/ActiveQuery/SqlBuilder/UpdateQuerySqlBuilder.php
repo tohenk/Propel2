@@ -99,7 +99,8 @@ class UpdateQuerySqlBuilder extends AbstractSqlQueryBuilder
     {
         $dotPos = strrpos($qualifiedColumnName, '.');
         $columnNameInUpdate = substr($qualifiedColumnName, $dotPos + 1);
-        $columnNameInUpdate = $this->criteria->quoteIdentifier($columnNameInUpdate, $tableName);
+        $columnNameInUpdate = $this->criteria->quoteIdentifier($columnNameInUpdate);
+        $columnNameInUpdate = sprintf('%s.%s', $this->quoteIdentifierTable($tableName), $columnNameInUpdate);
 
         $columnEquals = $columnNameInUpdate . '=';
 
