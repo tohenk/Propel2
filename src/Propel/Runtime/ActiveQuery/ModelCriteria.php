@@ -1951,7 +1951,7 @@ class ModelCriteria extends BaseModelCriteria
      *
      * @return int|null
      */
-    protected function basePreUpdate(array &$values, ConnectionInterface $con, bool $forceIndividualSaves = false): ?int
+    protected function basePreUpdate(&$values, ConnectionInterface $con, bool $forceIndividualSaves = false): ?int
     {
         return $this->preUpdate($values, $con, $forceIndividualSaves);
     }
@@ -1963,7 +1963,7 @@ class ModelCriteria extends BaseModelCriteria
      *
      * @return int|null
      */
-    protected function preUpdate(array &$values, ConnectionInterface $con, bool $forceIndividualSaves = false): ?int
+    protected function preUpdate(&$values, ConnectionInterface $con, bool $forceIndividualSaves = false): ?int
     {
         return null;
     }
