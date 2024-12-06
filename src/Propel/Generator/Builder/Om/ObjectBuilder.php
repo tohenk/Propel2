@@ -1160,7 +1160,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
         $script .= "
     " . $visibility . " function get$cfc(\$asArray = true";
         if ($column->isLazyLoad()) {
-            $script .= ', ConnectionInterface $con = null';
+            $script .= ', ?ConnectionInterface $con = null';
         }
 
         $script .= ")
@@ -1278,7 +1278,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
         $script .= "
     " . $visibility . " function $name(";
         if ($column->isLazyLoad()) {
-            $script .= 'ConnectionInterface $con = null';
+            $script .= '?ConnectionInterface $con = null';
         }
 
         $script .= ")
@@ -1483,7 +1483,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
      */
     $visibility function has$singularPhpName(\$value";
         if ($column->isLazyLoad()) {
-            $script .= ', ConnectionInterface $con = null';
+            $script .= ', ?ConnectionInterface $con = null';
         }
 
         $script .= "): bool
@@ -1557,7 +1557,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
         $script .= "
     " . $visibility . " function get$cfc(";
         if ($column->isLazyLoad()) {
-            $script .= 'ConnectionInterface $con = null';
+            $script .= '?ConnectionInterface $con = null';
         }
 
         $script .= ")
@@ -2206,7 +2206,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
      */
     $visibility function add$singularPhpName(\$value";
         if ($col->isLazyLoad()) {
-            $script .= ', ConnectionInterface $con = null';
+            $script .= ', ?ConnectionInterface $con = null';
         }
 
         $script .= ")
@@ -2254,7 +2254,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
      */
     $visibility function remove$singularPhpName(\$value";
         if ($col->isLazyLoad()) {
-            $script .= ', ConnectionInterface $con = null';
+            $script .= ', ?ConnectionInterface $con = null';
         }
         // we want to reindex the array, so array_ functions are not the best choice
         $script .= ")
@@ -4141,7 +4141,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
      * @return \$this The current object (for fluent API support)
      * @throws \Propel\Runtime\Exception\PropelException
      */
-    public function set" . $this->getFKPhpNameAffix($fk, false) . "($className \$v = null)
+    public function set" . $this->getFKPhpNameAffix($fk, false) . "(?$className \$v = null)
     {";
 
         foreach ($fk->getMapping() as $map) {
@@ -4962,7 +4962,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
      * @return \$this The current object (for fluent API support)
      * @throws \Propel\Runtime\Exception\PropelException
      */
-    public function set" . $this->getRefFKPhpNameAffix($refFK, false) . "($className \$v = null)
+    public function set" . $this->getRefFKPhpNameAffix($refFK, false) . "(?$className \$v = null)
     {
         \$this->$varName = \$v;
 
