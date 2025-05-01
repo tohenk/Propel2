@@ -3048,21 +3048,12 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
             \$keys[$num] => (\$includeLazyLoadColumns) ? \$this->get" . $col->getPhpName() . '() : null,';
             } else {
                 $script .= "
-            \$keys[$num] => \$this->get" . $col->getPhpName() . '(),';
+            \$keys[$num] => \$this->get" . $col->getPhpName() . ($col->isTemporalType() ? "('" . $this->getTemporalFormatter($col) . "')," : '(),');
             }
         }
         $script .= "
         ];";
 
-        foreach ($this->getTable()->getColumns() as $num => $col) {
-            if ($col->isTemporalType()) {
-                $script .= "
-        if (\$result[\$keys[$num]] instanceof \DateTimeInterface) {
-            \$result[\$keys[$num]] = \$result[\$keys[$num]]->format('" . $this->getTemporalFormatter($col) . "');
-        }
-        ";
-            }
-        }
         $script .= "
         \$virtualColumns = \$this->virtualColumns;
         foreach (\$virtualColumns as \$key => \$virtualColumn) {
