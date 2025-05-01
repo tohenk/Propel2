@@ -2647,7 +2647,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
      * @param int \$startcol 0-based offset column which indicates which resultset column to start with.
      * @param bool \$rehydrate Whether this object is being re-hydrated from the database.
      * @param string \$indexType The index type of \$row. Mostly DataFetcher->getIndexType().
-                                  One of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
+     *                            One of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                            TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *
      * @return int next starting column
