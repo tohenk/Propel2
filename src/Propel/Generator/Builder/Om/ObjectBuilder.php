@@ -7340,7 +7340,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
     protected function addMagicCall(string &$script): void
     {
         $behaviorCallScript = '';
-        $this->applyBehaviorModifier('objectCall', $behaviorCallScript, '    ');
+        $this->applyBehaviorModifier('objectCall', $behaviorCallScript, '        ');
 
         $script .= $this->renderTemplate('baseObjectMethodMagicCall', [
             'behaviorCallScript' => $behaviorCallScript,
