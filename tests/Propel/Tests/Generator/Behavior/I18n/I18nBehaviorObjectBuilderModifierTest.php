@@ -31,6 +31,8 @@ use ToyQuery;
  */
 class I18nBehaviorObjectBuilderModifierTest extends TestCase
 {
+    protected $con = null;
+
     /**
      * @return void
      */

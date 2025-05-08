@@ -29,7 +29,7 @@ class SelectQuerySqlBuilderTest extends TestCaseFixtures
             return;
         }
         parent::setUp();
-        $this->setupWasExecuted = true;
+        $this->configLoaded = true;
     }
 
     /**

@@ -32,6 +32,13 @@ abstract class MappingModel implements MappingModelInterface
     protected $vendorInfos = [];
 
     /**
+     * The list of properties.
+     *
+     * @var array
+     */
+    protected $props = [];
+
+    /**
      * Loads a mapping definition from an array.
      *
      * @param array $attributes
@@ -206,5 +213,38 @@ abstract class MappingModel implements MappingModelInterface
     public function getVendorInformation(): array
     {
         return $this->vendorInfos;
+    }
+
+    /**
+     * Set a particular property by a case-insensitive name.
+     *
+     * @param string $name
+     * @param mixed $value
+     *
+     * @return \Propel\Generator\Model\MappingModel
+     */
+    public function setProp(string $name, $value)
+    {
+        $this->props[strtolower($name)] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Returns a particular property by a case-insensitive name.
+     *
+     * If the property is not set, then the second default value is
+     * returned instead.
+     *
+     * @param string $name
+     * @param mixed|null $default
+     *
+     * @return mixed
+     */
+    public function getProp(string $name, $default = null)
+    {
+        $name = strtolower($name);
+
+        return isset($this->props[$name]) ? $this->props[$name] : $default;
     }
 }

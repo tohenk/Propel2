@@ -87,7 +87,7 @@ class ConcreteInheritanceBehavior extends Behavior
                 $fk->setOnDelete('CASCADE');
                 $fk->setOnUpdate(null);
                 $fk->addReference($copiedColumn, $column);
-                $fk->isParentChild = true;
+                $fk->setProp('isParentChild', true);
                 $table->addForeignKey($fk);
             }
         }
@@ -386,7 +386,7 @@ public function getSyncParent(?ConnectionInterface \$con = null)
     \$parent->set{$phpName}(\$this->get{$phpName}());";
         }
         foreach ($parentTable->getForeignKeys() as $fk) {
-            if (isset($fk->isParentChild) && $fk->isParentChild) {
+            if ($fk->getProp('isParentChild')) {
                 continue;
             }
             $refPhpName = $this->builder->getFKPhpNameAffix($fk, false);

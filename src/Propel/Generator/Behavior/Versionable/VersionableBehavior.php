@@ -67,7 +67,7 @@ class VersionableBehavior extends Behavior
                 // don't add the same behavior twice
                 continue;
             }
-            if (property_exists($table, 'isVersionTable')) {
+            if ($table->getProp('isVersionTable')) {
                 // don't add the behavior to version tables
                 continue;
             }
@@ -150,7 +150,7 @@ class VersionableBehavior extends Behavior
                 'skipSql' => $table->isSkipSql(),
                 'identifierQuoting' => $table->isIdentifierQuotingEnabled(),
             ]);
-            $versionTable->isVersionTable = true;
+            $versionTable->setProp('isVersionTable', true);
             // every behavior adding a table should re-execute database behaviors
             foreach ($database->getBehaviors() as $behavior) {
                 $behavior->modifyDatabase();
