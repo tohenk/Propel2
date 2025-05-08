@@ -7,7 +7,7 @@
     {
         // Invalidate objects in related instance pools,
         // since one or more of them may be deleted by ON DELETE CASCADE/SETNULL rule.
-    <?php foreach ($relatedClassNames as $relatedClassName) : ?>
-    <?= $relatedClassName ?>::clearInstancePool();
-    <?php endforeach; ?>
-}
+<?php foreach ($relatedClassNames as $relatedClassName) : ?>
+        <?= $relatedClassName ?>::clearInstancePool();
+<?php endforeach; ?>
+    }
