@@ -1153,7 +1153,7 @@ class " . $this->getUnqualifiedClassName() . " extends TableMap
      * @param array \$row Row returned by DataFetcher->fetch().
      * @param int \$offset The 0-based offset for reading from the resultset row.
      * @param string \$indexType The index type of \$row. Mostly DataFetcher->getIndexType().
-                                 One of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
+     *                           One of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                           TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *
      * @throws \Propel\Runtime\Exception\PropelException Any exceptions caught during processing will be
