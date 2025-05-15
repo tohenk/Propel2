@@ -445,7 +445,7 @@ public function getMaxRank(" . ($useScope ? "$methodSignature, " : '') . "?Conne
  *
  * @return int|null Highest position
  */
-public function getMaxRankArray(" . ($useScope ? '$scope, ' : '') . "ConnectionInterface \$con = null): ?int
+public function getMaxRankArray(" . ($useScope ? '$scope, ' : '') . "?ConnectionInterface \$con = null): ?int
 {
     if (\$con === null) {
         \$con = Propel::getConnection({$this->tableMapClassName}::DATABASE_NAME);
