@@ -1568,7 +1568,7 @@ class QueryBuilder extends AbstractOMBuilder
      *
      * @return $queryClass A secondary query class using the current class as primary query
      */
-    public function use" . $relationName . 'Query(?string $relationAlias = null, string $joinType = ' . $joinType . ")
+    public function use" . $relationName . 'Query(?string $relationAlias = null, ?string $joinType = ' . $joinType . ")
     {
         return \$this
             ->join" . $relationName . "(\$relationAlias, \$joinType)
