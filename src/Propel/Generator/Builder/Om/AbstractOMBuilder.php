@@ -983,6 +983,7 @@ abstract class AbstractOMBuilder extends DataModelBuilder
     protected static function getRefRelatedBySuffix(ForeignKey $fk): string
     {
         $relCol = '';
+        $relBy = true;
         foreach ($fk->getMapping() as $mapping) {
             [$localColumn, $foreignValueOrColumn] = $mapping;
             $localTable = $fk->getTable();
@@ -1004,10 +1005,17 @@ abstract class AbstractOMBuilder extends DataModelBuilder
             } elseif (count($foreignKeysToForeignTable) > 1 || count($fk->getForeignTableOrFail()->getForeignKeysReferencingTable($tableName)) > 0) {
                 // several foreign keys to the same table, or symmetrical foreign key in foreign table
                 $relCol .= $localColumn->getPhpName();
+            } else {
+                // alias to RefFk if foreign columns contains current fk PHP name
+                $columns = array_map(fn ($col) => $col->getName(), $fk->getForeignTable()->getColumns());
+                if (in_array($fk->getTable()->getPhpName(), $columns)) {
+                    $relCol = 'RefFk';
+                    $relBy = false;
+                }
             }
         }
 
-        if ($relCol) {
+        if ($relCol && $relBy) {
             $relCol = 'RelatedBy' . $relCol;
         }
 
