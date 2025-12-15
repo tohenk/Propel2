@@ -2443,7 +2443,7 @@ class Criteria
      *
      * @param mixed $cond Casts to bool for variable evaluation
      *
-     * @return \Propel\Runtime\ActiveQuery\Criteria|\Propel\Runtime\Util\PropelConditionalProxy
+     * @return $this
      */
     public function _if($cond)
     {
@@ -2462,7 +2462,7 @@ class Criteria
      *
      * @throws \Propel\Runtime\Exception\LogicException
      *
-     * @return \Propel\Runtime\ActiveQuery\Criteria|\Propel\Runtime\Util\PropelConditionalProxy
+     * @return $this
      */
     public function _elseif($cond)
     {
@@ -2481,7 +2481,7 @@ class Criteria
      *
      * @throws \Propel\Runtime\Exception\LogicException
      *
-     * @return \Propel\Runtime\ActiveQuery\Criteria|\Propel\Runtime\Util\PropelConditionalProxy
+     * @return $this
      */
     public function _else()
     {
@@ -2498,7 +2498,7 @@ class Criteria
      *
      * @throws \Propel\Runtime\Exception\LogicException
      *
-     * @return \Propel\Runtime\ActiveQuery\Criteria|\Propel\Runtime\Util\PropelConditionalProxy
+     * @return $this
      */
     public function _endif()
     {
