@@ -752,6 +752,22 @@ class Column extends MappingModel
     }
 
     /**
+     * Returns the type to use in PHP sources as type casting.
+     *
+     * @return string
+     */
+    public function getPhpTypeForCast(): string
+    {
+        $type = $this->getPhpType();
+        $casts = ['boolean' => 'bool', 'double' => 'float'];
+        if (isset($casts[$type])) {
+            $type = $casts[$type];
+        }
+
+        return $type;
+    }
+
+    /**
      * Returns the location of this column within the table (one-based).
      *
      * @return int|null

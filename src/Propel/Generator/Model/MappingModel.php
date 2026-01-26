@@ -109,7 +109,7 @@ abstract class MappingModel implements MappingModelInterface
         }
 
         if (is_numeric($value)) {
-            return (bool)$value;
+            return (bool) $value;
         }
 
         if ($value === null) {

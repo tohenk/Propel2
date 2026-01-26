@@ -2423,7 +2423,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
             if (is_string(\$v)) {
                 \$v = in_array(strtolower(\$v), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
             } else {
-                \$v = (boolean) \$v;
+                \$v = (bool) \$v;
             }
         }
 
@@ -2481,7 +2481,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
         if ($col->isPhpPrimitiveType()) {
             $script .= "
         if (\$v !== null) {
-            \$v = (" . $col->getPhpType() . ") \$v;
+            \$v = (" . $col->getPhpTypeForCast() . ") \$v;
         }
 ";
         }
@@ -2741,7 +2741,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
             \$this->$clo = (\$col) ? UuidConverter::binToUuid(\$col, $uuidSwapFlag) : null;";
                 } elseif ($col->isPhpPrimitiveType()) {
                     $script .= "
-            \$this->$clo = (null !== \$col) ? (" . $col->getPhpType() . ') $col : null;';
+            \$this->$clo = (null !== \$col) ? (" . $col->getPhpTypeForCast() . ') $col : null;';
                 } elseif ($col->getType() === PropelTypes::OBJECT) {
                     $script .= "
             \$this->$clo = \$col;";
@@ -6791,7 +6791,7 @@ abstract class " . $this->getUnqualifiedClassName() . $parentClass . ' implement
      * @param ConnectionInterface \$con";
         if ($reloadOnUpdate || $reloadOnInsert) {
             $script .= "
-     * @param boolean \$skipReload Whether to skip the reload for this object from database.";
+     * @param bool \$skipReload Whether to skip the reload for this object from database.";
         }
         $script .= "
      * @return int The number of rows affected by this insert/update and any referring fk objects' save() operations.
